@@ -1,13 +1,6 @@
 import matplotlib.pyplot as plt
 import networkx as nx
 
-
-# Функція для виведення шляху та його довжини
-def print_path(path):
-    print("Шлях:", path)
-    print("Довжина шляху:", len(path) - 1)
-
-
 # Станції метро в м. Дніпро
 stations = [
     "Покровська",
