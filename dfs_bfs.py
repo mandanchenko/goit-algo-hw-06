@@ -44,27 +44,22 @@ metro_graph = nx.Graph()
 metro_graph.add_nodes_from(stations)
 metro_graph.add_edges_from(edges)
 
-# Отримання основних характеристик графа
-num_nodes = metro_graph.number_of_nodes()
-num_edges = metro_graph.number_of_edges()
-degree_sequence = [degree for node, degree in metro_graph.degree()]
+# Визначення шляхів за допомогою DFS
+dfs_path = nx.dfs_edges(metro_graph, source="Покровська")
+dfs_path = list(dfs_path)
+print("Шляхи, знайдені за допомогою DFS:")
+for edge in dfs_path:
+    print(edge)
+print()
 
-# Вивід інформації
-print("Кількість вершин (станцій):", num_nodes)
-print("Кількість ребер (зв'язків):", num_edges)
-print("Ступінь кожної вершини:", degree_sequence)
+# Визначення шляхів за допомогою BFS
+bfs_path = nx.bfs_edges(metro_graph, source="Покровська")
+bfs_path = list(bfs_path)
+print("Шляхи, знайдені за допомогою BFS:")
+for edge in bfs_path:
+    print(edge)
+print()
 
-# Відображення графа
-pos = nx.spring_layout(metro_graph)
-nx.draw(
-    metro_graph,
-    pos,
-    with_labels=True,
-    font_weight="bold",
-    node_size=1000,
-    node_color="lightblue",
-    font_size=8,
-    edge_color="gray",
-)
-plt.title("Граф метрополітену м. Дніпро")
-plt.show()
+# Порівняння результатів
+print("Різниця у шляхах між DFS і BFS:")
+print(set(dfs_path) - set(bfs_path))
