@@ -1,5 +1,6 @@
-import networkx as nx
 import matplotlib.pyplot as plt
+import networkx as nx
+
 
 # Станції метро в м. Дніпро
 stations = [
